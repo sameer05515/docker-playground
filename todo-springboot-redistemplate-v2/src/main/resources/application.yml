@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: todo-redis-template-v2
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+      timeout: 2s
+
+server:
+  port: 8080
+
+app:
+  redis:
+    todo-ttl-minutes: 30
+
+logging:
+  level:
+    com.example.todo: INFO

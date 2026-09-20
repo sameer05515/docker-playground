@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: todo-postgres, namespace: todo-app}
+spec:
+ replicas: 1
+ selector: {matchLabels: {app: todo-postgres}}
+ template:
+  metadata: {labels: {app: todo-postgres}}
+  spec:
+   containers:
+   - name: postgres
+     image: postgres:17-alpine
+     ports: [{containerPort: 5432}]
+     env:
+     - {name: POSTGRES_DB, value: tododb}
+     - {name: POSTGRES_USER, value: todo}
+     - {name: POSTGRES_PASSWORD, value: todo123}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: postgres, namespace: todo-app}
+spec:
+ selector: {app: todo-postgres}
+ ports: [{port: 5432, targetPort: 5432}]

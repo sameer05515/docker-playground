@@ -1,0 +1,50 @@
+### Create
+POST http://localhost:8080/api/todos
+Content-Type: application/json
+
+{
+  "title": "Learn RedisTemplate",
+  "description": "Build Todo application",
+  "completed": false
+}
+
+### Create another
+POST http://localhost:8080/api/todos
+Content-Type: application/json
+
+{
+  "title": "Learn Docker",
+  "description": "Containerize Spring Boot and Redis",
+  "completed": true
+}
+
+### Get first page
+GET http://localhost:8080/api/todos?page=0&size=10
+
+### Search
+GET http://localhost:8080/api/todos?keyword=redis&page=0&size=10
+
+### Filter completed
+GET http://localhost:8080/api/todos?completed=true&page=0&size=10
+
+### Search + filter
+GET http://localhost:8080/api/todos?keyword=learn&completed=false&page=0&size=10
+
+### Get by ID
+GET http://localhost:8080/api/todos/1
+
+### Update
+PUT http://localhost:8080/api/todos/1
+Content-Type: application/json
+
+{
+  "title": "Learn RedisTemplate deeply",
+  "description": "Practice Redis Hash, Set and TTL",
+  "completed": true
+}
+
+### Count
+GET http://localhost:8080/api/todos/stats/count
+
+### Delete
+DELETE http://localhost:8080/api/todos/1

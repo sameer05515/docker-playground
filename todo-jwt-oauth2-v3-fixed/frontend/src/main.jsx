@@ -1,0 +1,29 @@
+import React,{useEffect,useState} from 'react';
+import {createRoot} from 'react-dom/client'; import axios from 'axios'; import './style.css';
+const API='http://localhost:8081';
+function Login({onLogin}){const[u,setU]=useState(''),[p,setP]=useState(''),[e,setE]=useState('');async function login(x){x.preventDefault();try{const r=await axios.post(`${API}/api/auth/login`,{username:u,password:p});localStorage.setItem('token',r.data.accessToken);onLogin(r.data.accessToken)}catch(x){setE(x.response?.data?.message||'Login failed')}}return <div className="card"><h1>Todo Login</h1><form onSubmit={login}><input placeholder="Username" value={u} onChange={x=>setU(x.target.value)}/><input type="password" placeholder="Password" value={p} onChange={x=>setP(x.target.value)}/><button>Login with Local JWT</button></form><button onClick={()=>location.href=`${API}/oauth2/authorization/keycloak`}>Login with Keycloak</button>{e&&<p className="error">{e}</p>}</div>}
+function TodoApp({token,onLogout}){const[todos,setTodos]=useState([]),[title,setTitle]=useState('');const api=axios.create({baseURL:API,headers:{Authorization:`Bearer ${token}`}});async function load(){setTodos((await api.get('/api/todos')).data)}useEffect(()=>{load().catch(x=>{if(x.response?.status===401)onLogout()})},[]);async function add(){if(!title.trim())return;await api.post('/api/todos',{title,completed:false});setTitle('');load()}async function toggle(t){await api.put(`/api/todos/${t.id}`,{title:t.title,completed:!t.completed});load()}async function remove(id){await api.delete(`/api/todos/${id}`);load()}return <div className="card wide"><div className="header"><h1>Todo App</h1><button onClick={onLogout}>Logout</button></div><div className="add"><input value={title} placeholder="Todo title" onChange={x=>setTitle(x.target.value)}/><button onClick={add}>Add</button></div><ul>{todos.map(t=><li key={t.id}><span className={t.completed?'done':''} onClick={()=>toggle(t)}>{t.title}</span><button onClick={()=>remove(t.id)}>Delete</button></li>)}</ul></div>}
+function App(){
+ const[token,setToken]=useState(localStorage.getItem('token'));
+ useEffect(()=>{
+  const t=new URLSearchParams(location.search).get('token');
+  if(t){localStorage.setItem('token',t);setToken(t);history.replaceState({},document.title,'/');}
+ },[]);
+ async function logout(){
+  const t=localStorage.getItem('token');
+  localStorage.removeItem('token');
+  if(!t){setToken(null);return;}
+  try{
+   const r=await axios.post(`${API}/api/auth/logout`,{}, {headers:{Authorization:`Bearer ${t}`}});
+   setToken(null);
+   if(r.data.logoutUrl){
+    window.location.href=r.data.logoutUrl;
+    return;
+   }
+  }catch(e){
+   setToken(null);
+  }
+ }
+ return token?<TodoApp token={token} onLogout={logout}/>:<Login onLogin={setToken}/>;
+}
+createRoot(document.getElementById('root')).render(<App/>);

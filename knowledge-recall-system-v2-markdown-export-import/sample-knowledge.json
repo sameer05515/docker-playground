@@ -1,0 +1,29 @@
+[
+  {
+    "title": "JDK vs JRE vs JVM",
+    "question": "What is the difference between JDK, JRE and JVM?",
+    "answer": "JVM executes Java bytecode. JRE provides the JVM plus runtime libraries. JDK provides the JRE/runtime plus development tools such as javac.",
+    "category": "Java",
+    "tags": [
+      "java",
+      "jvm",
+      "jdk",
+      "jre"
+    ],
+    "example": "javac Hello.java -> Hello.class -> JVM executes bytecode",
+    "notes": "Remember: JDK = develop, JRE = run, JVM = execute."
+  },
+  {
+    "title": "HashMap Internal Working",
+    "question": "How does HashMap work internally?",
+    "answer": "HashMap uses an array of buckets. A key's hash is processed to determine a bucket. Collisions are stored in nodes and may be treeified under certain conditions in Java 8+.",
+    "category": "Java",
+    "tags": [
+      "java",
+      "collections",
+      "hashmap"
+    ],
+    "example": "Map<String, Integer> map = new HashMap<>();",
+    "notes": "Remember: hash -> bucket -> node -> collision -> list/tree."
+  }
+]

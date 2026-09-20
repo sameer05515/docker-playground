@@ -1,0 +1,4 @@
+import 'dotenv/config';import mongoose from 'mongoose';import {connectDb} from './config/db.js';import Phase from './models/Phase.js';import fs from 'node:fs';
+await connectDb();const data=JSON.parse(fs.readFileSync(new URL('./data/roadmap.json',import.meta.url),'utf8'));
+await Phase.deleteMany({});await Phase.insertMany(data.map((p,i)=>({phaseId:String(p.id??i+1),week:p.week,title:p.title||p.name,description:p.description,topics:(p.topics||[]).map((t,j)=>typeof t==='string'?{topicId:`${i+1}-${j+1}`,title:t,summary:'Interview preparation topic',difficulty:'medium',minutes:20,tags:[p.title||p.name],questions:[`Explain ${t}.`,`What are common interview pitfalls around ${t}?`]}:{...t,topicId:t.topicId||t.id||`${i+1}-${j+1}`})}))));
+console.log(`Seeded ${data.length} phases`);await mongoose.disconnect();

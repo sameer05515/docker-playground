@@ -1,0 +1,28 @@
+### Create
+POST http://localhost:8080/api/todos
+Content-Type: application/json
+
+{
+  "title": "Learn RedisTemplate",
+  "description": "Build Todo application with Redis",
+  "completed": false
+}
+
+### Get all
+GET http://localhost:8080/api/todos
+
+### Get by id
+GET http://localhost:8080/api/todos/1
+
+### Update
+PUT http://localhost:8080/api/todos/1
+Content-Type: application/json
+
+{
+  "title": "Learn RedisTemplate deeply",
+  "description": "Practice Redis Hash and Set operations",
+  "completed": true
+}
+
+### Delete
+DELETE http://localhost:8080/api/todos/1
