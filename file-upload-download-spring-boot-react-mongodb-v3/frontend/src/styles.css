@@ -1,0 +1,34 @@
+:root{font-family:Inter,Arial,sans-serif;color:#172033;background:#f4f6fa;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0}
+button,input{font:inherit}
+.page{max-width:1180px;margin:0 auto;padding:32px 20px 50px}
+.hero{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;color:#53627a;margin:0 0 8px}
+h1{font-size:40px;margin:0 0 8px}
+h2{margin:0 0 14px}
+.subtitle{margin:0;color:#667085}
+.badge{font-weight:800;font-size:24px;border:1px solid #d9deea;border-radius:16px;padding:18px 22px;background:#fff}
+.card{background:#fff;border:1px solid #e3e7ef;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 8px 30px #1018280b}
+.upload-form{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+input[type=file]{max-width:100%}
+input[type=text],input:not([type]){border:1px solid #cfd5df;border-radius:9px;padding:10px 12px;min-width:250px;outline:none}
+button,.button{background:#2563eb;color:#fff;border:0;border-radius:9px;padding:10px 14px;text-decoration:none;cursor:pointer;font-weight:700}
+button:disabled{opacity:.55;cursor:not-allowed}
+.secondary{background:#eef2f7;color:#263247}
+.danger{background:#dc2626}
+.alert{padding:12px 15px;border-radius:10px;margin-bottom:16px}
+.success{background:#e9f8ef;color:#176b36}
+.error{background:#fdecec;color:#9b1c1c}
+.hint{font-size:13px;color:#667085}
+.section-header{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:12px}
+.search{display:flex;gap:8px;flex-wrap:wrap}
+.search input{border:1px solid #cfd5df;border-radius:9px;padding:10px 12px;min-width:260px}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px 10px;border-bottom:1px solid #edf0f4;text-align:left;white-space:nowrap}
+th{font-size:12px;text-transform:uppercase;color:#667085}
+.actions{display:flex;gap:8px}
+.empty{padding:40px;text-align:center;color:#667085;background:#f8fafc;border-radius:10px}
+footer{display:flex;gap:20px;flex-wrap:wrap;color:#667085;font-size:13px}
+@media(max-width:800px){.hero,.section-header{align-items:flex-start;flex-direction:column}h1{font-size:32px}.search{width:100%}.search input{min-width:0;flex:1}}
