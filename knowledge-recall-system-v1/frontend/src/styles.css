@@ -1,0 +1,304 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #18202a;
+  background: #f4f7fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+.app {
+  min-height: 100vh;
+}
+
+.hero {
+  background: #172033;
+  color: white;
+  padding: 42px max(24px, calc((100vw - 1180px) / 2));
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: .65;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 48px);
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: #c8d0df;
+  max-width: 680px;
+}
+
+.stats {
+  text-align: center;
+  min-width: 120px;
+}
+
+.stats span {
+  display: block;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.stats small {
+  color: #b8c1d2;
+}
+
+main {
+  max-width: 1180px;
+  margin: 28px auto;
+  padding: 0 20px 60px;
+}
+
+.panel, .card, .toolbar, .message, .empty {
+  background: white;
+  border: 1px solid #e3e8ef;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(30, 45, 70, .05);
+}
+
+.panel {
+  padding: 24px;
+}
+
+.section-title, .toolbar, .card-top, .card-actions, .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.section-title p, .toolbar p {
+  margin: 5px 0 0;
+  color: #6c7787;
+}
+
+.form-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-weight: 650;
+  font-size: 14px;
+}
+
+input, textarea, select {
+  width: 100%;
+  border: 1px solid #cfd7e3;
+  border-radius: 10px;
+  padding: 11px 12px;
+  background: white;
+  color: #18202a;
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #5267e8;
+  box-shadow: 0 0 0 3px rgba(82, 103, 232, .12);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.primary, .secondary, .danger {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 15px;
+  font-weight: 700;
+}
+
+.primary {
+  background: #4357d8;
+  color: white;
+}
+
+.secondary {
+  background: #edf1f7;
+  color: #263246;
+}
+
+.danger {
+  background: #fff0f0;
+  color: #b3261e;
+}
+
+.toolbar {
+  margin: 28px 0 14px;
+  padding: 18px 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  min-width: min(500px, 100%);
+}
+
+.message {
+  margin: 12px 0;
+  padding: 12px 15px;
+  color: #315a35;
+  background: #effaf0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.card h3 {
+  margin: 13px 0 9px;
+  font-size: 20px;
+}
+
+.category {
+  background: #eef1ff;
+  color: #4357d8;
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.date {
+  color: #8993a3;
+  font-size: 12px;
+}
+
+.question {
+  color: #384457;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+summary {
+  cursor: pointer;
+  color: #4357d8;
+  font-weight: 700;
+}
+
+.answer {
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+pre {
+  overflow-x: auto;
+  background: #172033;
+  color: #e7edf7;
+  border-radius: 10px;
+  padding: 13px;
+}
+
+.notes {
+  background: #fff9e8;
+  border-left: 4px solid #e5bd45;
+  padding: 10px 12px;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 14px 0;
+}
+
+.tags span {
+  background: #f1f3f6;
+  color: #5f6978;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.card-actions {
+  justify-content: flex-end;
+  border-top: 1px solid #edf0f4;
+  padding-top: 13px;
+  margin-top: 14px;
+}
+
+.empty {
+  text-align: center;
+  padding: 55px 20px;
+}
+
+.empty-icon {
+  font-size: 42px;
+}
+
+.empty h3 {
+  margin: 10px 0 5px;
+}
+
+.empty p {
+  color: #727d8c;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form-grid, .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filters {
+    flex-direction: column;
+    min-width: 0;
+  }
+}
