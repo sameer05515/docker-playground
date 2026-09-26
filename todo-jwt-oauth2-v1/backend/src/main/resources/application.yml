@@ -18,7 +18,7 @@ spring:
         registration:
           keycloak:
             client-id: todo-client
-            client-secret: todo-secret
+            client-secret: b77SIUXrW9xvWN6sxLT5UgD4ElGbVUWM
             authorization-grant-type: authorization_code
             scope: openid,profile,email
         provider:
