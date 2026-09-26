@@ -1,5 +1,6 @@
 server:
   port: 8081
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/todo_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
@@ -17,12 +18,13 @@ spring:
         registration:
           keycloak:
             client-id: todo-client
-            client-secret: b77SIUXrW9xvWN6sxLT5UgD4ElGbVUWM
+            client-secret: todo-secret
             authorization-grant-type: authorization_code
             scope: openid,profile,email
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/todo-realm
+
 app:
   jwt:
     secret: "change-this-development-secret-key-to-at-least-32-bytes"
