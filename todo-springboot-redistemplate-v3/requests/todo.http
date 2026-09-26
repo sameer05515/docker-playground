@@ -1,0 +1,26 @@
+### Create
+POST http://localhost:8080/api/todos
+Content-Type: application/json
+
+{"title":"Learn Redis Cache","description":"RedisTemplate + MySQL","completed":false}
+
+### GET: first call -> DB/cache miss; next call -> Redis/cache hit
+GET http://localhost:8080/api/todos/1
+
+### TTL
+GET http://localhost:8080/api/todos/1/cache-ttl
+
+### Search + pagination
+GET http://localhost:8080/api/todos?keyword=redis&completed=false&page=0&size=10
+
+### Update: DB + cache update
+PUT http://localhost:8080/api/todos/1
+Content-Type: application/json
+
+{"title":"Learn RedisTemplate deeply","description":"Cache aside + invalidation","completed":true}
+
+### Delete: DB + cache eviction
+DELETE http://localhost:8080/api/todos/1
+
+### Clear all Todo cache
+DELETE http://localhost:8080/api/todos/cache
