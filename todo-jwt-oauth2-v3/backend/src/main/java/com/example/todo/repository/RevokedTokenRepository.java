@@ -1,5 +1,18 @@
 package com.example.todo.repository;
+
 import com.example.todo.entity.RevokedToken;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import java.time.Instant;
-public interface RevokedTokenRepository extends JpaRepository<RevokedToken,Long>{boolean existsByTokenHash(String tokenHash); long deleteByExpiresAtBefore(Instant now);}
+
+@Repository
+public interface RevokedTokenRepository extends JpaRepository<RevokedToken, Long> {
+
+    boolean existsByTokenHash(String tokenHash);
+
+    @Modifying
+    @Query("delete from RevokedToken r where r.expiresAt < :now")
+    int deleteExpired(@Param("now") Instant now);
+}
