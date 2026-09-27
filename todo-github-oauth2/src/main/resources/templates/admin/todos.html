@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - All Todos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="nav">
+        <h2>Admin - All Todos</h2>
+        <div>
+            <a class="button secondary" href="/todos">My Todos</a>
+            <form action="/logout" method="post" style="display:inline">
+                <button class="button danger" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Created By</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="todo : ${todos}">
+            <td th:text="${todo.id}"></td>
+            <td th:text="${todo.title}"></td>
+            <td th:text="${todo.description}"></td>
+            <td th:text="${todo.completed ? 'Yes' : 'No'}"></td>
+            <td th:text="${todo.createdBy.username}"></td>
+            <td>
+                <a class="button small"
+                   th:href="@{/todos/{id}/edit(id=${todo.id})}">
+                    Edit
+                </a>
+                <form th:action="@{/todos/{id}/delete(id=${todo.id})}"
+                      method="post"
+                      style="display:inline">
+                    <button class="button small danger" type="submit">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(todos)}">
+            <td colspan="6">No todos found.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
