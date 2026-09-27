@@ -1,0 +1,41 @@
+{
+  "realm": "todo-realm",
+  "enabled": true,
+  "displayName": "Todo Realm",
+  "registrationAllowed": false,
+  "clients": [
+    {
+      "clientId": "todo-app",
+      "name": "Python Todo MVC",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "todo-app-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["http://localhost:5000/authorize"],
+      "webOrigins": ["http://localhost:5000"],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:5000/"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "demo",
+      "enabled": true,
+      "email": "demo@example.com",
+      "emailVerified": true,
+      "firstName": "Demo",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f5f7fb; color: #172033; }
+.nav { height: 64px; padding: 0 7%; display: flex; justify-content: space-between; align-items: center; background: #172033; color: white; }
+.nav a { color: white; text-decoration: none; margin-left: 16px; }
+.brand { font-weight: 700; font-size: 18px; margin-left: 0 !important; }
+.user { opacity: .8; }
+.container { width: min(900px, 92%); margin: 40px auto; }
+.hero, .card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 4px 18px rgba(0,0,0,.06); }
+.hero { text-align: center; padding: 60px 24px; }
+.button, button { border: 0; border-radius: 8px; padding: 10px 16px; cursor: pointer; background: #2563eb; color: white; text-decoration: none; }
+.form { display: grid; gap: 12px; margin-bottom: 24px; }
+input, textarea { width: 100%; border: 1px solid #d6dbe5; border-radius: 8px; padding: 12px; font: inherit; }
+textarea { min-height: 90px; resize: vertical; }
+.todos { display: grid; gap: 14px; }
+.todo { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+.todo.done h3 { text-decoration: line-through; opacity: .6; }
+.actions { display: flex; gap: 8px; }
+.actions form { margin: 0; }
+.actions button { background: #16a34a; }
+.actions .danger { background: #dc2626; }
+.flash { padding: 12px 16px; margin-bottom: 16px; border-radius: 8px; background: #e8f5e9; }
+.flash.error { background: #fee2e2; }
+@media (max-width: 600px) { .todo { flex-direction: column; align-items: stretch; } }

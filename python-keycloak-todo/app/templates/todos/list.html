@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}My Todos{% endblock %}
+{% block content %}
+<h1>My Todos</h1>
+<form method="post" action="{{ url_for('todo.create_todo') }}" class="card form">
+    <input name="title" placeholder="Todo title" required maxlength="255">
+    <textarea name="description" placeholder="Description"></textarea>
+    <button class="button" type="submit">Add Todo</button>
+</form>
+
+{% if todos %}
+<div class="todos">
+{% for todo in todos %}
+<article class="card todo {% if todo.completed %}done{% endif %}">
+    <div>
+        <h3>{{ todo.title }}</h3>
+        {% if todo.description %}<p>{{ todo.description }}</p>{% endif %}
+        <small>{{ todo.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+    </div>
+    <div class="actions">
+        <form method="post" action="{{ url_for('todo.toggle_todo', todo_id=todo.id) }}">
+            <button type="submit">{{ 'Undo' if todo.completed else 'Complete' }}</button>
+        </form>
+        <form method="post" action="{{ url_for('todo.delete_todo', todo_id=todo.id) }}">
+            <button type="submit" class="danger">Delete</button>
+        </form>
+    </div>
+</article>
+{% endfor %}
+</div>
+{% else %}
+<p>No todos yet.</p>
+{% endif %}
+{% endblock %}
