@@ -1,0 +1,47 @@
+{
+  "realm": "todo-realm",
+  "enabled": true,
+  "displayName": "Todo Realm",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "clients": [
+    {
+      "clientId": "todo-node-app",
+      "name": "Todo Node.js Application",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "todo-node-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "http://localhost:3000/auth/callback"
+      ],
+      "webOrigins": [
+        "http://localhost:3000"
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:3000/"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "prem",
+      "enabled": true,
+      "email": "prem@example.com",
+      "emailVerified": true,
+      "firstName": "Prem",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

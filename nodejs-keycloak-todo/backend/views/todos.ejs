@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Todos</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>My Todos</h1>
+        <p>
+          Logged in as
+          <strong><%= user.username %></strong>
+          <% if (user.email) { %>
+            (<%= user.email %>)
+          <% } %>
+        </p>
+      </div>
+
+      <a class="btn secondary" href="/auth/logout">Logout</a>
+    </header>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/todos" class="todo-form">
+      <input
+        type="text"
+        name="title"
+        placeholder="Todo title"
+        maxlength="255"
+        required
+      />
+
+      <textarea
+        name="description"
+        placeholder="Description"
+      ></textarea>
+
+      <button class="btn" type="submit">Add Todo</button>
+    </form>
+
+    <section>
+      <% if (todos.length === 0) { %>
+        <div class="empty">No todos yet.</div>
+      <% } %>
+
+      <% todos.forEach(todo => { %>
+        <article class="todo <%= todo.completed ? 'completed' : '' %>">
+          <div>
+            <h3><%= todo.title %></h3>
+
+            <% if (todo.description) { %>
+              <p><%= todo.description %></p>
+            <% } %>
+
+            <small>
+              Created:
+              <%= new Date(todo.created_at).toLocaleString() %>
+            </small>
+          </div>
+
+          <div class="actions">
+            <form method="POST" action="/todos/<%= todo.id %>/toggle">
+              <button class="btn small" type="submit">
+                <%= todo.completed ? "Mark Pending" : "Complete" %>
+              </button>
+            </form>
+
+            <form method="POST" action="/todos/<%= todo.id %>/delete"
+                  onsubmit="return confirm('Delete this todo?')">
+              <button class="btn danger small" type="submit">
+                Delete
+              </button>
+            </form>
+          </div>
+        </article>
+      <% }) %>
+    </section>
+  </main>
+</body>
+</html>

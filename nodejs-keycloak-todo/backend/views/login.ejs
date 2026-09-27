@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Todo - Login</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container login-card">
+    <h1>Todo Application</h1>
+    <p>Node.js + Express + EJS + Keycloak</p>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <a class="btn" href="/auth/login">Login with Keycloak</a>
+
+    <div class="hint">
+      Demo user: <strong>prem</strong> / <strong>password</strong>
+    </div>
+  </main>
+</body>
+</html>
